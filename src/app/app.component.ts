@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'spring-boot-client';
+  title = 'Bienvenido a Angular';
+  course:string = 'Spring boot Api Rest'
 }
