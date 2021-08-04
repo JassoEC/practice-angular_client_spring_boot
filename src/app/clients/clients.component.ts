@@ -1,29 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from './client';
+import { ClientService } from './client.service';
 
 @Component({
   selector: 'app-clients',
   templateUrl: './clients.component.html',
 })
 export class ClientsComponent implements OnInit {
-  constructor() {}
+  clients: Client[] = [];
 
-  ngOnInit(): void {}
+  /**
+   * Es posible primero declarar la propiedad y en el cuerpo de la funcuin
+   * asignar el valor como tradicionalment se hace
+   * sin embargo resulta en codigo mas extenso a diferncia de los que se muestra en seguida
+   */
+  constructor(private clientService: ClientService) {}
 
-  clients: Client[] = [
-    {
-      id: 1,
-      name: 'Emanuel',
-      lastName: 'Campos',
-      email: 'ecampos@mail.com',
-      createdAt: '30-01-1994',
-    },
-    {
-      id: 2,
-      name: 'Michelle',
-      lastName: 'Pacheco',
-      email: 'michelle@mail.com',
-      createdAt: '29-05-2000',
-    },
-  ];
+  ngOnInit(): void {
+    /**
+     * Los observables funcionan de forma equivalente a los "effects" de React
+     *
+     * La funcion getClients retrona un stream, un observable, a ese resultado debe estar
+     * suscrito la propiedad de la clase para que se actualize con cualquier cambio
+     */
+
+    this.clientService
+      .getClients()
+      .subscribe((result) => (this.clients = result));
+  }
 }
