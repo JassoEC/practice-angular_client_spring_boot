@@ -7,6 +7,13 @@ import { FooterComponent } from './footer/footer.component';
 import { DirectiveComponent } from './directive/directive.component';
 import { ClientsComponent } from './clients/clients.component';
 import { ClientService } from './clients/client.service';
+import { Route, RouterModule } from '@angular/router';
+
+const routes: Route[] = [
+  { path: '', redirectTo: '/clients', pathMatch: 'full' },
+  { path: 'directives', component: DirectiveComponent },
+  { path: 'clients', component: ClientsComponent },
+];
 
 @NgModule({
   declarations: [
@@ -16,7 +23,7 @@ import { ClientService } from './clients/client.service';
     DirectiveComponent,
     ClientsComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, RouterModule.forRoot(routes)],
   providers: [ClientService],
   bootstrap: [AppComponent],
 })
