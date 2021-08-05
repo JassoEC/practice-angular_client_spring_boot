@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { Client } from './client';
 import { CLIENTS } from './clients.json';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * El decorador inyetable es propio de las clases service
@@ -13,9 +14,11 @@ import { CLIENTS } from './clients.json';
   providedIn: 'root',
 })
 export class ClientService {
-  constructor() {}
+  private urlEndPoit: string = 'http://localhost:8080/api/clients';
+  constructor(private http: HttpClient) {}
 
   getClients(): Observable<Client[]> {
-    return of(CLIENTS);
+    //  return of(CLIENTS);
+    return this.http.get<Client[]>(this.urlEndPoit);
   }
 }
