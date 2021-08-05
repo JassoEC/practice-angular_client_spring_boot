@@ -6,11 +6,11 @@ export class Client {
   createdAt: string;
 
   constructor(
-    id: number,
-    name: string,
-    lasName: string,
-    email: string,
-    createdAt: string
+    id: number = 0,
+    name: string = '',
+    lasName: string = '',
+    email: string = '',
+    createdAt: string = ''
   ) {
     this.id = id;
     this.name = name;
