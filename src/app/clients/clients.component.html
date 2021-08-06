@@ -11,7 +11,9 @@
         Crear cliente
       </button>
     </div>
-    <h1 *ngIf="clients.length == 0">No hay clientes</h1>
+    <div class="alert alert-warning" *ngIf="clients.length == 0">
+      No hay registros en la base de datos
+    </div>
     <table class="table table-bordered table-hover" *ngIf="clients.length > 0">
       <thead>
         <tr>
