@@ -17,6 +17,7 @@ const routes: Route[] = [
   { path: 'directives', component: DirectiveComponent },
   { path: 'clients', component: ClientsComponent },
   { path: 'clients/create', component: FormComponent },
+  { path: 'clients/update/:id', component: FormComponent },
 ];
 
 @NgModule({

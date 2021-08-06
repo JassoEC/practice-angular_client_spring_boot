@@ -1,4 +1,4 @@
-<div class="card border-primary mb-3">
+<div class="card border-primary mb-3 pb-3">
   <div class="card-body text-primary">
     <h5 class="card-title">Lista de clientes</h5>
     <div class="my-3">
@@ -11,7 +11,8 @@
         Crear cliente
       </button>
     </div>
-    <table class="table">
+    <h1 *ngIf="clients.length == 0">No hay clientes</h1>
+    <table class="table table-bordered table-hover" *ngIf="clients.length > 0">
       <thead>
         <tr>
           <th>#</th>
@@ -19,6 +20,8 @@
           <th>Apellido</th>
           <th>email</th>
           <th>Fecha</th>
+          <th>Edit</th>
+          <th>Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -28,6 +31,19 @@
           <td>{{ client.lastName }}</td>
           <td>{{ client.email }}</td>
           <td>{{ client.createdAt }}</td>
+          <td>
+            <button
+              class="btn btn-primary"
+              [routerLink]="['/clients/update', client.id]"
+            >
+              Edit
+            </button>
+          </td>
+          <td>
+            <button class="btn btn-danger" (click)="delete(client)">
+              Delete
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
